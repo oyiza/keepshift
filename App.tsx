@@ -1,11 +1,31 @@
 import { StatusBar } from 'expo-status-bar'
 import { Text, View } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient'
+import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from 'expo-font';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useCallback } from 'react';
 
 // custom imports
 import { styles } from './baseStyle'
 
-export default function App () {
+export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'Sen-Regular': require('./assets/fonts/Sen-Regular.ttf'),
+    'Sen-Bold': require('./assets/fonts/Sen-Bold.ttf'),
+    'Sen-ExtraBold': require('./assets/fonts/Sen-ExtraBold.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded])
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <LinearGradient
       colors={['rgba(133, 160, 255, 0.73)', 'transparent']}
@@ -13,11 +33,9 @@ export default function App () {
       start={{ x: 0.5, y: 1 }}
       end={{ x: 0.5, y: 0 }}
     >
-      <View>
-        <Text>Keepshift</Text>
-
-        {/* Status bar component below allows us to go full screen in the notch area */}
-        <StatusBar style='auto' />
+      <View onLayout={onLayoutRootView}>
+        <Text style={{ fontFamily: 'Sen-Bold' }}>KeepShift!</Text>
+        <StatusBar style="auto" />
       </View>
     </LinearGradient>
   )
