@@ -1,9 +1,9 @@
+import React, { useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar'
 import { Text, View } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useCallback } from 'react';
 
 // custom imports
 import { styles } from './baseStyle'
