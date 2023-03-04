@@ -1,24 +1,25 @@
 import { StatusBar } from 'expo-status-bar'
-import { Text, View } from 'react-native'
-import * as SplashScreen from 'expo-splash-screen';
-import { useFonts } from 'expo-font';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useCallback } from 'react';
+import { View } from 'react-native'
+import * as SplashScreen from 'expo-splash-screen'
+import { useFonts } from 'expo-font'
+import { LinearGradient } from 'expo-linear-gradient'
+import { useCallback } from 'react'
+
+import Header from './src/components/Header/Header'
 
 // custom imports
-import { styles } from './baseStyle'
+import { styles } from './BaseStyle'
 
-export default function App() {
-
+export default function App () {
   const [fontsLoaded] = useFonts({
     'Sen-Regular': require('./assets/fonts/Sen-Regular.ttf'),
     'Sen-Bold': require('./assets/fonts/Sen-Bold.ttf'),
-    'Sen-ExtraBold': require('./assets/fonts/Sen-ExtraBold.ttf'),
-  });
+    'Sen-ExtraBold': require('./assets/fonts/Sen-ExtraBold.ttf')
+  })
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+      await SplashScreen.hideAsync()
     }
   }, [fontsLoaded])
 
@@ -33,9 +34,9 @@ export default function App() {
       start={{ x: 0.5, y: 1 }}
       end={{ x: 0.5, y: 0 }}
     >
-      <View onLayout={onLayoutRootView}>
-        <Text style={{ fontFamily: 'Sen-Bold' }}>KeepShift!</Text>
-        <StatusBar style="auto" />
+      <View onLayout={onLayoutRootView} style={styles.container}>
+        <Header fontFamily={'Sen-Bold'}></Header>
+        <StatusBar style='auto' />
       </View>
     </LinearGradient>
   )
