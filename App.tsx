@@ -1,13 +1,12 @@
+import React, { useCallback } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { View } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useCallback } from 'react'
-
-import Header from './src/components/Header/Header'
 
 // custom imports
+import Header from './src/components/Header/Header'
 import { styles } from './BaseStyle'
 
 export default function App () {
