@@ -4,6 +4,8 @@ import { View } from 'react-native'
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
+import { database } from './src/data/database'
+import * as SQLite from 'expo-sqlite'
 
 // custom imports
 import Header from './src/components/Header/Header'
@@ -24,6 +26,12 @@ export default function App () {
 
   if (!fontsLoaded) {
     return null
+  }
+
+  database.createTable()
+
+  const getData = () => {
+    database.getItems()
   }
 
   return (
