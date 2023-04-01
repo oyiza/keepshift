@@ -28,11 +28,11 @@ export default function App () {
     return null
   }
 
-  database.createTable()
+  // database.createTable()
 
-  const getData = () => {
-    database.getItems()
-  }
+  // const getData = () => {
+  //   database.getItems()
+  // }
 
   return (
     <LinearGradient
