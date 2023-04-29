@@ -10,7 +10,6 @@ import * as SQLite from 'expo-sqlite'
 // custom imports
 import Header from './src/components/Header/Header'
 import { styles } from './BaseStyle'
-import InputField from './src/components/InputField/InputField'
 
 export default function App () {
   const [fontsLoaded] = useFonts({
@@ -44,9 +43,6 @@ export default function App () {
     >
       <View onLayout={onLayoutRootView} style={styles.container}>
         <Header fontFamily={'Sen-Bold'}></Header>
-        <View>
-          <InputField fontFamily={'Sen-Bold'} placeholder='Add Company' />
-        </View>
         <StatusBar style='auto' />
       </View>
     </LinearGradient>
